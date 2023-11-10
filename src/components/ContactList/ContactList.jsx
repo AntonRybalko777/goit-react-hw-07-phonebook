@@ -1,8 +1,8 @@
 import Notiflix from 'notiflix';
 import { Button, Li, Ul } from './ContactList.styled';
 import { AiFillDelete } from 'react-icons/ai';
-import { useSelector } from 'react-redux';
-// import { deleteContact } from 'redux/ContactsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/operations';
 import { getContacts } from 'redux/selectors';
 import { getFilter } from 'redux/selectors';
 
@@ -12,7 +12,7 @@ export const ContactList = () => {
   const filteredContacts = items.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   return (
     <Ul>
@@ -24,7 +24,7 @@ export const ContactList = () => {
               Notiflix.Notify.info(
                 `${contact.name} has been removed from the contacts`
               );
-              // dispatch(deleteContact(contact.id));
+              dispatch(deleteContact(contact.id));
             }}
           >
             <AiFillDelete size={15} />

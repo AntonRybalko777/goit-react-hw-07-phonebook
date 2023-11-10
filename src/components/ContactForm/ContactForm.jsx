@@ -4,8 +4,8 @@ import Notiflix from 'notiflix';
 import { nanoid } from 'nanoid';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from 'redux/ContactsSlice';
 import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 
 import {
   StyledField,
@@ -29,7 +29,7 @@ const contactSchema = Yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const { items } = useSelector(getContacts);
   return (
     <div>
       <Formik
@@ -39,14 +39,13 @@ export const ContactForm = () => {
         }}
         validationSchema={contactSchema}
         onSubmit={(values, actions) => {
-          if (contacts.find(contact => contact.name === values.name.trim())) {
+          if (items.find(contact => contact.name === values.name.trim())) {
             Notiflix.Notify.failure(`${values.name} already in contacts`);
           } else {
             dispatch(
               addContact({
                 name: values.name.trim(),
-                number: values.number.trim(),
-                id: nanoid(),
+                phone: values.number.trim(),
               })
             );
             Notiflix.Notify.success(
