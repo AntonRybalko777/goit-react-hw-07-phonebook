@@ -18,7 +18,7 @@ export const ContactList = () => {
     <Ul>
       {filteredContacts.map(contact => (
         <Li key={contact.id}>
-          {contact.name} : {contact.phone}
+          {contact.name} : <b>{contact.phone}</b>
           <Button
             onClick={() => {
               Notiflix.Notify.info(

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Ul = styled.ul`
   list-style: none;
+  transition: 400ms ease-in;
 `;
 
 export const Li = styled.li`

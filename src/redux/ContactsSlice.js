@@ -24,12 +24,14 @@ const ContactsSlice = createSlice({
     [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = action.payload;
+      state.items = action.payload.sort((a, b) => a.name.localeCompare(b.name));
     },
     [addContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = [...state.items, action.payload];
+      state.items = [...state.items, action.payload].sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
     },
     [deleteContact.fulfilled](state, action) {
       state.isLoading = false;
