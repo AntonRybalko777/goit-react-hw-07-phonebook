@@ -1,7 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Notiflix from 'notiflix';
-import { nanoid } from 'nanoid';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/selectors';
