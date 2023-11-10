@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/ContactsSlice';
-import { getContacts } from 'redux/ContactsSlice';
+import { getContacts } from 'redux/selectors';
 
 import {
   StyledField,
