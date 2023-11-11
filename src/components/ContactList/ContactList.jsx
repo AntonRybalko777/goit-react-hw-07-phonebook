@@ -3,15 +3,10 @@ import { Button, Li, Ul } from './ContactList.styled';
 import { AiFillDelete } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
-import { getContacts } from 'redux/selectors';
-import { getFilter } from 'redux/selectors';
+import { selectVisibleContacts } from 'redux/selectors';
 
 export const ContactList = () => {
-  const { items } = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  const filteredContacts = items.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const filteredContacts = useSelector(selectVisibleContacts);
   const dispatch = useDispatch();
 
   return (

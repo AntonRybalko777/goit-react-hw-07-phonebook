@@ -12,3 +12,8 @@ export const Span = styled.span`
   font-size: 15px;
   color: grey;
 `;
+
+export const ErrorMsg = styled.p`
+  color: ${props => props.theme.colors.error};
+  font-weight: bold;
+`;

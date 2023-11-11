@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import Notiflix from 'notiflix';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { selectItems } from 'redux/selectors';
 import { addContact } from 'redux/operations';
 
 import {
@@ -21,14 +21,14 @@ const contactSchema = Yup.object().shape({
     .required('This field is required'),
   number: Yup.string()
     .required('This field is required')
-    .matches(/^[0-9]+$/, 'Must be only digits')
+    .matches(/^[0-9.-]*$/, 'Allowed only digits, dash and dots')
     .min(7, 'Min length is 7')
     .max(12, 'Max length is 12'),
 });
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const { items } = useSelector(getContacts);
+  const items = useSelector(selectItems);
   return (
     <div>
       <Formik
