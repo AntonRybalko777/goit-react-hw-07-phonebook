@@ -47,9 +47,6 @@ export const ContactForm = () => {
                 phone: values.number.trim(),
               })
             );
-            Notiflix.Notify.success(
-              `${values.name} successfully added to the contacts!`
-            );
             actions.resetForm();
           }
         }}

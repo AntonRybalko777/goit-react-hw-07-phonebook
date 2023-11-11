@@ -1,4 +1,3 @@
-import Notiflix from 'notiflix';
 import { Button, Li, Ul } from './ContactList.styled';
 import { AiFillDelete } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
@@ -16,10 +15,7 @@ export const ContactList = () => {
           {contact.name} : <b>{contact.phone}</b>
           <Button
             onClick={() => {
-              Notiflix.Notify.info(
-                `${contact.name} has been removed from the contacts`
-              );
-              dispatch(deleteContact(contact.id));
+              dispatch(deleteContact(contact));
             }}
           >
             <AiFillDelete size={15} />
